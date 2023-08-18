@@ -14,9 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-<<<<<<< HEAD
-    { "folke/which-key.nvim" },
-=======
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -30,7 +27,6 @@ require('lazy').setup({
             -- refer to the configuration section below
         }
     },
->>>>>>> 6594c21 (v2)
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -93,11 +89,7 @@ require('lazy').setup({
     },
     {
         "rcarriga/nvim-dap-ui",
-<<<<<<< HEAD
-        dependencies = {"mfussenegger/nvim-dap"}
-=======
         dependencies = { "mfussenegger/nvim-dap" }
->>>>>>> 6594c21 (v2)
     },
     {
         -- Add indentation guides even on blank lines
@@ -108,7 +100,10 @@ require('lazy').setup({
             char = '┊',
             show_trailing_blankline_indent = false,
         },
-        { 'rose-pine/neovim', name = 'rose-pine' },
+    },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine'
     }
 })
 
