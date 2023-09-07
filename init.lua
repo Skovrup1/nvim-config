@@ -1,4 +1,4 @@
-require("core")
+require('core')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 local uv = vim.uv or vim.loop
@@ -21,8 +21,23 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = {
     default = { lazy = true },
-    perfomance = {
-    },
+    install = { colorscheme = { 'rose-pine' } },
+    checker = { enabled = true },
+    performance = {
+        cache = { enabled = true, },
+        rtp = {
+            disabled_plugins = {
+                'gzip',
+                -- 'matchit',
+                -- 'matchparen',
+                -- 'netrwPlugin',
+                'tarPlugin',
+                'tohtml',
+                'tutor',
+                'zipPlugin',
+            },
+        },
+    }
 }
 
 require('lazy').setup({
