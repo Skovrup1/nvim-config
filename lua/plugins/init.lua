@@ -32,39 +32,39 @@ return {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
         },
         config = function()
             require('configs.cmp')
         end
     },
     {
-        "L3MON4D3/LuaSnip",
+        'L3MON4D3/LuaSnip',
         dependencies = {
-            "rafamadriz/friendly-snippets",
+            'rafamadriz/friendly-snippets',
             config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
+                require('luasnip.loaders.from_vscode').lazy_load()
             end,
         },
         opts = {
             history = true,
-            delete_check_events = "TextChanged",
+            delete_check_events = 'TextChanged',
         },
         keys = {
             {
-                "<tab>",
+                '<tab>',
                 function()
-                    return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+                    return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<tab>'
                 end,
                 expr = true,
                 silent = true,
-                mode = "i",
+                mode = 'i',
             },
-            { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
-            { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+            { '<tab>',   function() require('luasnip').jump(1) end,  mode = 's' },
+            { '<s-tab>', function() require('luasnip').jump(-1) end, mode = { 'i', 's' } },
         },
     },
     {
@@ -119,6 +119,15 @@ return {
         config = function()
             require('configs.latex')
         end
+    },
+    -- Markdown
+    {
+        'ellisonleao/glow.nvim',
+        config = function()
+            require('configs.glow')
+        end,
+        ft = 'markdown',
+        cmd = 'Glow'
     },
     --Debugging
     --{},
