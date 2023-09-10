@@ -112,6 +112,14 @@ return {
             })
         end
     },
+    -- Latex
+    {
+        'lervag/vimtex',
+        lazy = false,
+        config = function()
+            require('configs.latex')
+        end
+    },
     --Debugging
     --{},
     --
