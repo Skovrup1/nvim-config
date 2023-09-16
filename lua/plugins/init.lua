@@ -1,10 +1,9 @@
 return {
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        'maxmx03/dracula.nvim',
         priority = 1000,
         config = function()
-            require('configs.catppuccin')
+            vim.cmd.colorscheme('dracula')
         end
     },
     {
@@ -57,7 +56,7 @@ return {
             'L3MON4D3/LuaSnip',
             lazy = true,
             dependencies = {
-                { "rafamadriz/friendly-snippets" },
+                { 'rafamadriz/friendly-snippets' },
             },
         },
 
@@ -82,45 +81,45 @@ return {
         },
 
         {
-            "echasnovski/mini.pairs",
-            event = "VeryLazy",
+            'echasnovski/mini.pairs',
+            event = 'VeryLazy',
             opts = {},
         },
         {
-            "echasnovski/mini.surround",
+            'echasnovski/mini.surround',
             opts = {
                 mappings = {
-                    add = "gza",            -- Add surrounding in Normal and Visual modes
-                    delete = "gzd",         -- Delete surrounding
-                    find = "gzf",           -- Find surrounding (to the right)
-                    find_left = "gzF",      -- Find surrounding (to the left)
-                    highlight = "gzh",      -- Highlight surrounding
-                    replace = "gzr",        -- Replace surrounding
-                    update_n_lines = "gzn", -- Update `n_lines`
+                    add = 'gza',            -- Add surrounding in Normal and Visual modes
+                    delete = 'gzd',         -- Delete surrounding
+                    find = 'gzf',           -- Find surrounding (to the right)
+                    find_left = 'gzF',      -- Find surrounding (to the left)
+                    highlight = 'gzh',      -- Highlight surrounding
+                    replace = 'gzr',        -- Replace surrounding
+                    update_n_lines = 'gzn', -- Update `n_lines`
                 },
             },
         },
 
         {
-            "folke/noice.nvim",
-            event = "VeryLazy",
+            'folke/noice.nvim',
+            event = 'VeryLazy',
             config = function ()
                 require('configs.noice')
             end,
             dependencies = {
-                -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-                "MunifTanjim/nui.nvim",
+                -- if you lazy-load any plugin below, make sure to add proper `module='...'` entries
+                'MunifTanjim/nui.nvim',
                 -- OPTIONAL:
                 --   `nvim-notify` is only needed, if you want to use the notification view.
                 --   If not available, we use `mini` as the fallback
-                "rcarriga/nvim-notify",
+                'rcarriga/nvim-notify',
             }
         },
 
         -- Key helper
         {
-            "folke/which-key.nvim",
-            event = "VeryLazy",
+            'folke/which-key.nvim',
+            event = 'VeryLazy',
             init = function()
                 vim.o.timeout = true
                 vim.o.timeoutlen = 300
