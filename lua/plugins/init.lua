@@ -1,8 +1,10 @@
 return {
     {
-            "catppuccin/nvim", name = "catppuccin", priority = 1000,
+            "nyoom-engineering/oxocarbon.nvim",
+            name = "oxocarbon",
+            priority = 1000,
             config = function()
-                vim.cmd.colorscheme "catppuccin"
+                vim.cmd.colorscheme "oxocarbon"
             end,
     },
     {
@@ -48,12 +50,19 @@ return {
             dependencies = {
                 { 'hrsh7th/cmp-path' },
                 { 'hrsh7th/cmp-nvim-lua' },
+                { 'saadparwaiz1/cmp_luasnip' },
                 { 'L3MON4D3/LuaSnip' },
             }
         },
+        { "rafamadriz/friendly-snippets" },
         {
             'L3MON4D3/LuaSnip',
             lazy = true,
+            version = "v2.*",
+            build = "make install_jsregexp",
+            config = function()
+                require('configs.snippet')
+            end,
             dependencies = {
                 { 'rafamadriz/friendly-snippets' },
             },
@@ -79,25 +88,25 @@ return {
 
         },
 
-        {
-            'echasnovski/mini.pairs',
-            event = 'VeryLazy',
-            opts = {},
-        },
-        {
-            'echasnovski/mini.surround',
-            opts = {
-                mappings = {
-                    add = 'gza',            -- Add surrounding in Normal and Visual modes
-                    delete = 'gzd',         -- Delete surrounding
-                    find = 'gzf',           -- Find surrounding (to the right)
-                    find_left = 'gzF',      -- Find surrounding (to the left)
-                    highlight = 'gzh',      -- Highlight surrounding
-                    replace = 'gzr',        -- Replace surrounding
-                    update_n_lines = 'gzn', -- Update `n_lines`
-                },
-            },
-        },
+        --{
+        --    'echasnovski/mini.pairs',
+        --    event = 'VeryLazy',
+        --    opts = {},
+        --},
+        --{
+            --'echasnovski/mini.surround',
+            --opts = {
+                --mappings = {
+                    --add = 'gza',            -- Add surrounding in Normal and Visual modes
+                    --delete = 'gzd',         -- Delete surrounding
+                    --find = 'gzf',           -- Find surrounding (to the right)
+                    --find_left = 'gzF',      -- Find surrounding (to the left)
+                    --highlight = 'gzh',      -- Highlight surrounding
+                    --replace = 'gzr',        -- Replace surrounding
+                    --update_n_lines = 'gzn', -- Update `n_lines`
+                --},
+            --},
+        --},
 
         -- Key helper
         {
