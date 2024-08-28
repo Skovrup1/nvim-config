@@ -9,7 +9,7 @@ opt.tabstop = 4 -- Number of spaces tabs count for
 
 -- Line numbers
 opt.number = true -- Print line number
-opt.numberwidth = 4
+opt.numberwidth = 1
 opt.relativenumber = true -- Relative line numbers
 opt.ruler = true
 

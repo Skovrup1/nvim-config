@@ -14,7 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = {
-
     performance = {
         rtp = {
             disabled_plugins = {

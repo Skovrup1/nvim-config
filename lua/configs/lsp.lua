@@ -19,10 +19,15 @@ require('mason-lspconfig').setup({
             local lua_opts = lsp_zero.nvim_lua_ls()
             require('lspconfig').lua_ls.setup(lua_opts)
 
+
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.offsetEncoding = 'utf-8'
-            require('lspconfig').clangd.setup{
+            require('lspconfig').clangd.setup {
                 capabilities = capabilities
+            }
+
+            require 'lspconfig'.slangd.setup {
+                filetypes = { "hlsl", "shaderslang", "slang" }
             }
         end,
     },
