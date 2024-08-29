@@ -19,7 +19,7 @@ local lazy_config = {
             disabled_plugins = {
                 'tutor',
             },
-        },
+       },
     }
 }
 
