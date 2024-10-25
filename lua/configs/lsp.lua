@@ -38,6 +38,14 @@ require('mason-lspconfig').setup({
                 end,
             })
         end,
+
+        clangd = function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.offsetEncoding = 'utf-8'
+            require('lspconfig').clangd.setup({
+                capabilities = capabilities
+            })
+        end,
     }
 })
 
