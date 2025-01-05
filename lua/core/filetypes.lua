@@ -1,5 +1,7 @@
 vim.filetype.add({
     extension = {
-        slang = "slang"
+        slang = "slang",
+        ispc = "ispc",
+        fut = "futhark",
     },
 })

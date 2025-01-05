@@ -59,6 +59,8 @@ require('lspconfig').hls.setup({
     }
 })
 
+require'lspconfig'.futhark_lsp.setup{}
+
 local cmp = require('cmp')
 
 cmp.setup({
