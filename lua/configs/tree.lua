@@ -1,8 +1,8 @@
--- Treesitter Plugin Setup 
+-- treesitter plugin setup
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "lua" },
-  auto_install = true,
-  highlight = {
-    enable = true,
-  },
+    ensure_installed = { "lua" },
+    auto_install = true,
+    highlight = {
+        enable = true,
+    },
 }

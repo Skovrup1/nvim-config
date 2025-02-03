@@ -7,7 +7,7 @@ opt.tabstop = 4               -- Number of spaces tabs count for
 
 -- Indenting
 opt.shiftround = true         -- Round indent
-opt.smartindent = true            -- Insert indents automatically
+opt.smartindent = true        -- Insert indents automatically
 
 -- Line numbers
 opt.number = true             -- Print line number
