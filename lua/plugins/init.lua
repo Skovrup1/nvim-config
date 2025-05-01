@@ -27,7 +27,7 @@ return {
         end
     },
 
-    -- fuzzy searching
+    -- Fuzzy searching
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -61,5 +61,15 @@ return {
         config = function()
             require("configs.which-key")
         end
+    },
+
+    -- Futhark LSP support
+    {
+        "BeneCollyridam/futhark-vim",
+    },
+
+    -- Undotree visualizer
+    {
+        "mbbill/undotree"
     },
 }

@@ -3,5 +3,6 @@ vim.filetype.add({
         slang = "slang",
         ispc = "ispc",
         fut = "futhark",
+        hip = "cpp",
     },
 })

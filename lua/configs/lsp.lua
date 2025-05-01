@@ -27,7 +27,7 @@ require('mason-lspconfig').setup({
   },
 })
 
-require('lspconfig').hls.setup({})
+-- require('lspconfig').hls.setup({})
 
 -- This is where you enable features that only work
 -- if there is a language server active in the file
