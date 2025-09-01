@@ -1,11 +1,11 @@
 return {
     -- Theme
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "rose-pine/neovim",
+        name = "rose-pine",
         priority = 1000,
         config = function()
-            require("configs.catppuccin")
+            require("configs.rose-pine")
         end,
     },
 
@@ -72,6 +72,9 @@ return {
 
     -- Undotree visualizer
     {
-        "mbbill/undotree"
+        "mbbill/undotree",
+        config = function()
+            require("configs.undotree")
+        end
     },
 }

@@ -62,7 +62,7 @@ opt.splitbelow = true       -- Put new windows below current
 opt.winminwidth = 5         -- Minimum window width
 
 -- Popup
-opt.pumblend = 10    -- Popup blend
+opt.pumblend = 10    -- Popup transparency
 opt.pumheight = 10   -- Maximum number of entries in a popup
 
 -- Timing
@@ -72,17 +72,19 @@ opt.updatetime = 200    -- Save swap file and trigger CursorHold
 -- Formatting
 opt.formatoptions = "tcqj"
 
--- GOT NO CLUE
+-- Scroll off
+opt.scrolloff = 4                                  -- Keeps atleast 4 lines visible when scrolling up or down
+opt.sidescrolloff = 8                              -- Same for columns
+
+-- Misc
 opt.autowrite = true                               -- Enable auto write
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,noselect"          -- Autocomplete menu
 opt.conceallevel = 3                               -- Hide * markup for bold and italic
 opt.inccommand = "nosplit"                         -- preview incremental substitute
 opt.laststatus = 0
-opt.scrolloff = 4                                  -- Lines of context
 opt.sessionoptions = { "buffers", "curdir",
                         "tabpages", "winsize" }
-opt.shortmess:append({ W = true, I = true,
+opt.shortmess:append({ W = true, I = true,         -- Suppress some messages
                         c = true })
-opt.sidescrolloff = 8                              -- Columns of context
 opt.signcolumn = "yes"                             -- Always show the signcolumn, otherwise it would shift the text each time
 opt.wildmode = "longest:full,full"                 -- Command-line completion mode
