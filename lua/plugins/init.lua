@@ -24,6 +24,7 @@ return {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         config = function()
             require("configs.tree")
         end

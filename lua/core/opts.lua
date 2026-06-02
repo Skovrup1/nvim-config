@@ -79,7 +79,7 @@ opt.sidescrolloff = 8                              -- Same for columns
 -- Misc
 opt.autowrite = true                               -- Enable auto write
 opt.completeopt = "menu,menuone,noselect"          -- Autocomplete menu
-opt.conceallevel = 3                               -- Hide * markup for bold and italic
+opt.conceallevel = 0
 opt.inccommand = "nosplit"                         -- preview incremental substitute
 opt.laststatus = 0
 opt.sessionoptions = { "buffers", "curdir",

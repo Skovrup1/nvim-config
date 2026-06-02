@@ -1,8 +1,6 @@
--- treesitter plugin setup
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { "lua" },
-    auto_install = true,
-    highlight = {
-        enable = true,
-    },
-}
+-- Treesitter plugin setup.
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})
