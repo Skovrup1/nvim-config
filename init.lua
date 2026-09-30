@@ -1,30 +1,8 @@
-require("core")
+-- Leader must be set before any plugins/keymaps are loaded
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-local lazy_config = {
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                'tutor',
-            },
-       },
-    }
-}
-
-require('lazy').setup({
-        { import = 'plugins' }
-    },
-    lazy_config
-)
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
+require("plugins")

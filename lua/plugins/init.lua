@@ -1,81 +1,66 @@
-return {
-    -- Theme
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        priority = 1000,
-        config = function()
-            require("configs.rose-pine")
-        end,
-    },
+-- Plugin management via Neovim 0.12 built-in vim.pack.
+-- No lazy-loading: plugins load at startup (this config is small enough that
+-- startup stays well under ~50ms).
 
-    -- LSP support
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("configs.lsp")
-        end,
-        dependencies = {
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" }
-        }
-    },
+vim.pack.add({
+  -- Theme
+  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "main",
-        config = function()
-            require("configs.tree")
-        end
-    },
+  -- Treesitter (`main` branch / rewrite — required for Neovim 0.12 compat;
+  -- the `master` branch crashes on injection predicates under 0.12)
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 
-    -- Fuzzy searching
-    {
-        "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
-        config = function()
-            require("configs.telescope")
-        end,
-        dependencies = {
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
-        }
+  -- LSP server configurations (used via native vim.lsp.enable)
+  { src = "https://github.com/neovim/nvim-lspconfig" },
 
-    },
+  -- Completion (release tag => prebuilt fuzzy binary is downloaded, no cargo build)
+  { src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
 
-    -- Harpoon
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        config = function()
-            require("configs.harpoon")
-        end,
-        dependencies = {
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope.nvim" }
-        }
-    },
+  -- Fuzzy finder
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
 
-    -- Key helper
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("configs.which-key")
-        end
-    },
+  -- File pinning / quick navigation
+  { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 
-    -- Futhark LSP support
-    {
-        "BeneCollyridam/futhark-vim",
-    },
+  -- Undo history visualizer
+  { src = "https://github.com/mbbill/undotree" },
 
-    -- Undotree visualizer
-    {
-        "mbbill/undotree",
-        config = function()
-            require("configs.undotree")
-        end
-    },
-}
+  -- Git gutter signs
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+
+  -- Keymap discovery
+  { src = "https://github.com/folke/which-key.nvim" },
+})
+
+-- vim.pack has no build hooks, so run them ourselves when a plugin is
+-- installed or updated.
+vim.api.nvim_create_autocmd("PackChanged", {
+  group = vim.api.nvim_create_augroup("pack_build", { clear = true }),
+  callback = function(ev)
+    local data = ev.data
+    if data.kind == "delete" then
+      return
+    end
+    local name = data.spec and data.spec.name or ""
+    local src = data.spec and data.spec.src or ""
+
+    if name:match("nvim%-treesitter") or src:match("nvim%-treesitter") then
+      vim.cmd("TSUpdate")
+    elseif src:match("telescope%-fzf%-native") then
+      vim.system({ "make" }, { cwd = data.path })
+    end
+  end,
+})
+
+-- Load configuration modules
+require("plugins.theme")
+require("plugins.treesitter")
+require("plugins.telescope")
+require("plugins.harpoon")
+require("plugins.undotree")
+require("plugins.gitsigns")
+require("plugins.completion")
+require("plugins.lsp")
+require("plugins.whichkey")
